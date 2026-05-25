@@ -1,105 +1,2508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heavy Removal — Junk Removal Service</title>
-  <meta name="description" content="Fast, affordable junk removal. We show up, we haul it, you enjoy your space. Get a free quote today." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heavy Removal — Got Junk? We've Got A Truck.</title>
+  <meta name="description" content="Point at it. We'll take it. Friendly neighborhood crew with a big truck, honest pricing, and zero drama. Same-day junk pickups available.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DESIGN SYSTEM & VARIABLES
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     :root {
+      --dark: #111111;
       --orange: #FF6B00;
-      --dark:   #111111;
-      --white:  #ffffff;
+      --white: #FFFFFF;
+      --gray: #F5F5F0;
+      --muted: #777777;
+      --orange-glow: rgba(255, 107, 0, 0.3);
+      --orange-dim: rgba(255, 107, 0, 0.10);
+      
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      
+      --transition-smooth: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition-fast: all 0.15s ease;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.15);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      
+      --container-width: 1200px;
     }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       BASE STYLES & RESET
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
+      font-family: var(--font-body);
+      background-color: var(--dark);
       color: var(--white);
-      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Grain Overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* Selection Color */
+    ::selection {
+      background-color: var(--orange);
+      color: var(--dark);
+    }
+
+    /* Typography */
+    h1, h2, h3, .heading-font {
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #D1D1CB;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    /* Utilities */
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-spacing {
+      padding: 7rem 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-orange {
+      color: var(--orange);
+    }
+
+    /* Alternating Sections styling */
+    .bg-dark {
+      background-color: var(--dark);
+      color: var(--white);
+    }
+
+    .bg-light {
+      background-color: var(--gray);
+      color: var(--dark);
+    }
+
+    .bg-light p {
+      color: #444444;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2.2rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-orange {
+      background-color: var(--orange);
+      color: var(--dark);
+    }
+
+    .btn-orange:hover {
+      background-color: var(--white);
+      color: var(--dark);
+      box-shadow: 0 0 20px var(--orange-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--white);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-dark {
+      background-color: transparent;
+      color: var(--dark);
+      border-color: var(--dark);
+    }
+
+    .btn-outline-dark:hover {
+      background-color: var(--dark);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Eyebrows & Section Headers */
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--orange);
+      background-color: var(--orange-dim);
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      max-width: 650px;
+      margin: 0 auto 4rem auto;
+      font-weight: 400;
+    }
+
+    .section-subtitle-left {
+      margin-left: 0;
+      margin-bottom: 3rem;
+      text-align: left;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #252525;
+      border: 2px solid var(--dark);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       1. TOPBAR
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .topbar {
+      background-color: #0b0b0b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #999999;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      z-index: 1001;
+      position: relative;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-left, .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .topbar-dot {
+      width: 4px;
+      height: 4px;
+      background-color: var(--orange);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       2. STICKY NAV
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .header-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 17, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition-smooth);
+    }
+
+    .header-nav.scrolled {
+      background: rgba(11, 11, 11, 0.95);
+      box-shadow: var(--shadow-md);
+      padding: 0.2rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    /* Logo Styling */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.9;
+    }
+
+    .logo-main {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-dot {
+      color: var(--orange);
+      margin: 0 -0.05em;
+    }
+
+    .logo-sub {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #BBBBBB;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--orange);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Mobile Hamburger Trigger */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1010;
+    }
+
+    .hamburger-box {
+      width: 24px;
+      height: 18px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      display: block;
+      top: 50%;
+      margin-top: -1px;
+      width: 24px;
+      height: 2px;
+      background-color: var(--white);
+      position: absolute;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .hamburger-inner::before, .hamburger-inner::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--white);
+      position: absolute;
+      transition: transform 0.15s ease;
+    }
+
+    .hamburger-inner::before {
+      top: -6px;
+    }
+
+    .hamburger-inner::after {
+      bottom: -6px;
+    }
+
+    /* Active hamburger animation */
+    .hamburger.is-active .hamburger-inner {
+      background-color: transparent;
+    }
+    .hamburger.is-active .hamburger-inner::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .hamburger.is-active .hamburger-inner::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* Mobile Menu Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: rgba(11, 11, 11, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1005;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 2rem;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-drawer.is-active {
+      right: 0;
+    }
+
+    .mobile-drawer ul {
+      list-style: none;
       text-align: center;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
     }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      letter-spacing: 4px;
+
+    .mobile-drawer ul a {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
       color: var(--white);
-      line-height: 1;
-      margin-bottom: .5rem;
-    }
-    .logo span { color: var(--orange); }
-    .tagline {
-      font-size: clamp(.85rem, 2vw, 1rem);
-      font-weight: 600;
-      letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.4);
-      margin-bottom: 3rem;
     }
-    .badge {
-      display: inline-block;
-      background: var(--orange);
+
+    .mobile-drawer ul a:hover {
+      color: var(--orange);
+    }
+
+    .mobile-drawer-cta {
+      margin-top: 1.5rem;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       3. HERO SECTION
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 110px);
+      display: flex;
+      align-items: center;
+      padding: 5rem 0;
+      background: radial-gradient(circle at bottom left, rgba(255, 107, 0, 0.12) 0%, var(--dark) 75%);
+      overflow: hidden;
+    }
+
+    /* Large Background Ghost Text */
+    .hero-ghost-text {
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 25vw, 36rem);
+      line-height: 0.8;
+      color: rgba(255, 255, 255, 0.02);
+      position: absolute;
+      bottom: -5%;
+      right: -5%;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      font-weight: 800;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+      font-weight: 900;
+    }
+
+    .hero-subline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 400;
+      color: #E2E2D5;
+      margin-bottom: 2.5rem;
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       4. STATS SECTION
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-card {
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 4px solid var(--dark);
+      padding: 3rem 2rem;
+      border-radius: 4px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-bottom-color: var(--orange);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 5vw, 5rem);
       color: var(--dark);
-      font-size: .75rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card:hover .stat-number {
+      color: var(--orange);
+    }
+
+    .stat-label {
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      color: var(--dark);
       text-transform: uppercase;
-      padding: .5rem 1.25rem;
-      border-radius: 2px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-desc {
+      font-size: 0.9rem;
+      color: #666666;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       5. STUFF WE TAKE
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .take-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .take-card {
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 2.5rem;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .take-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background-color: var(--orange);
+      transition: var(--transition-smooth);
+    }
+
+    .take-card:hover::before {
+      height: 100%;
+    }
+
+    .take-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 107, 0, 0.25);
+      background-color: #1c1c1c;
+      box-shadow: var(--shadow-md);
+    }
+
+    .take-icon {
+      width: 48px;
+      height: 48px;
+      fill: var(--orange);
       margin-bottom: 1.5rem;
     }
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      line-height: 1;
-      letter-spacing: 2px;
+
+    .take-title {
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-      max-width: 600px;
     }
-    p {
-      font-size: 1rem;
-      color: rgba(255,255,255,.5);
-      line-height: 1.7;
-      max-width: 400px;
-      margin: 0 auto 2.5rem;
+
+    .take-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #BBBBBB;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1rem;
+      margin-top: 1rem;
     }
-    .cta {
-      display: inline-block;
-      background: var(--orange);
+
+    .take-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .take-list li::before {
+      content: "✓";
+      color: var(--orange);
+      font-weight: bold;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       6. HOW IT WORKS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .how-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .how-step-item {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .how-step-num {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4rem);
+      color: var(--orange);
+      line-height: 1;
+      opacity: 0.8;
+      background-color: rgba(255, 107, 0, 0.08);
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      height: fit-content;
+      border: 1px solid rgba(255, 107, 0, 0.15);
+    }
+
+    .how-step-content h3 {
+      font-size: 1.6rem;
       color: var(--dark);
-      font-weight: 700;
-      font-size: .9rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 1rem 2.5rem;
-      border-radius: 3px;
-      transition: opacity .2s;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
     }
-    .cta:hover { opacity: .85; }
-    footer {
-      position: fixed;
-      bottom: 1.5rem;
-      font-size: .7rem;
-      color: rgba(255,255,255,.15);
-      letter-spacing: 1px;
+
+    .how-step-content p {
+      font-size: 1rem;
+    }
+
+    /* Crew Image Frame */
+    .how-image-container {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .how-image-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 8px solid var(--orange);
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.15;
+    }
+
+    .how-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(10%) contrast(105%);
+      transition: var(--transition-smooth);
+    }
+
+    .how-image-container:hover .how-image {
+      transform: scale(1.03);
+    }
+
+    .how-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
+      padding: 2.5rem 2rem 1.5rem 2rem;
+      z-index: 3;
+      color: var(--white);
+    }
+
+    .how-image-tagline {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .how-image-subtext {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       7. INTERACTIVE PRICING CALCULATOR
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Interactive Truck Box styling */
+    .truck-container {
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .truck-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Load Block States */
+    .load-block {
+      fill: #262626;
+      stroke: rgba(255, 255, 255, 0.04);
+      stroke-width: 1.5px;
+      transition: fill 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .load-block.active {
+      fill: var(--orange);
+      opacity: 0.9;
+    }
+    
+    .single-item-box {
+      fill: #262626;
+      stroke: rgba(255, 255, 255, 0.04);
+      stroke-width: 1px;
+      transition: fill 0.3s ease;
+    }
+
+    .single-item-box.active {
+      fill: var(--orange);
+    }
+
+    .truck-label-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--dark);
+      color: #999999;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Controls & Details */
+    .pricing-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .price-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 0.4rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .price-tab-btn {
+      background: none;
+      border: none;
+      color: #999999;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.8rem 0.5rem;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: var(--transition-fast);
+    }
+
+    .price-tab-btn.active {
+      background-color: var(--orange);
+      color: var(--dark);
+    }
+
+    .price-tab-btn:hover:not(.active) {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .price-details-card {
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+
+    .price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .price-val {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .price-desc {
+      font-size: 1rem;
+      color: #DDDDDD;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-includes-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      color: var(--orange);
+    }
+
+    .price-includes-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #BBBBBB;
+    }
+
+    .price-includes-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price-includes-list li::before {
+      content: "•";
+      color: var(--orange);
+      font-size: 1.2rem;
+    }
+
+    .pricing-footer-note {
+      grid-column: span 2;
+      background-color: rgba(255, 107, 0, 0.05);
+      border: 1px dashed rgba(255, 107, 0, 0.25);
+      padding: 1.2rem 1.8rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pricing-footer-note svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       7.5. GALLERY SECTION
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 4px solid var(--white);
+      transition: var(--transition-smooth);
+      background-color: var(--white);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--orange);
+    }
+
+    .gallery-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      padding: 1.2rem;
+      color: var(--dark);
+    }
+
+    .gallery-caption h4 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+
+    .gallery-caption p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .gallery-img-wrapper {
+        height: 220px;
+      }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       8. REVIEWS / TESTIMONIALS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .review-card {
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .review-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--orange);
+    }
+
+    .review-text {
+      font-size: 0.98rem;
+      color: #DDDDDD;
+      font-style: italic;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.2rem;
+    }
+
+    .review-avatar-init {
+      width: 40px;
+      height: 40px;
+      background-color: var(--orange);
+      color: var(--dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .review-info-name {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+
+    .review-info-loc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       9. QUICK BOOKING FORM
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .booking-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 4rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .booking-wrapper::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    .form-full-width {
+      grid-column: span 2;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #BBBBBB;
+    }
+
+    .form-input {
+      background-color: var(--dark);
+      border: 1.5px solid #2d2d2d;
+      border-radius: 4px;
+      padding: 0.9rem 1.2rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-fast);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.15);
+    }
+
+    .form-input::placeholder {
+      color: #555555;
+    }
+
+    select.form-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B00'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.5rem;
+      padding-right: 2.5rem;
+    }
+
+    /* Photo Upload Field */
+    .file-upload-container {
+      position: relative;
+      border: 2px dashed #2d2d2d;
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    .file-upload-container:hover {
+      border-color: var(--orange);
+      background-color: rgba(255, 107, 0, 0.02);
+    }
+
+    .file-upload-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-upload-icon {
+      width: 32px;
+      height: 32px;
+      fill: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .file-upload-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #DDDDDD;
+      margin-bottom: 0.2rem;
+    }
+
+    .file-upload-subtext {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .file-preview {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--orange);
+      display: none;
+    }
+
+    .form-btn-wrapper {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .form-btn {
+      width: 100%;
+      padding: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    /* Form Success and Loading States */
+    .form-success-container {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .success-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background-color: var(--orange-dim);
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem auto;
+      box-shadow: 0 0 20px var(--orange-glow);
+    }
+
+    .success-icon-wrapper svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--orange);
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .success-text {
+      font-size: 1.1rem;
+      color: #DDDDDD;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(17, 17, 17, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--dark);
+      animation: spin 0.8s ease-in-out infinite;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       10. FOOTER
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .footer {
+      background-color: #0b0b0b;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 5rem 0 2rem 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .footer-tagline {
+      font-size: 1rem;
+      color: #999999;
+      max-width: 300px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      background-color: #171717;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .social-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: #BBBBBB;
+    }
+
+    .social-btn:hover {
+      background-color: var(--orange);
+    }
+
+    .social-btn:hover svg {
+      fill: var(--dark);
+    }
+
+    .footer-col-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #BBBBBB;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 3px;
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: #BBBBBB;
+    }
+
+    .footer-contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .footer-contact-list svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #666666;
+    }
+
+    .footer-areas {
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SCROLL REVEAL ANIMATIONS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Transition delays */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE MEDIA QUERIES
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1024px) {
+      .stats-grid {
+        gap: 1.5rem;
+      }
+      .take-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .how-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .pricing-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        display: none; /* Hide topbar on mobile to save screen real estate */
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        display: none; /* Hide CTA in header on mobile, drawer has it */
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hero {
+        text-align: center;
+        justify-content: center;
+        padding: 4rem 0;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .take-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-wrapper {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .form-full-width {
+        grid-column: span 1;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      
+      .price-tabs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="logo">HEAVY<span>.</span>REMOVAL</div>
-  <div class="tagline">Junk Removal Service</div>
-  <div class="badge">🚧 Website Coming Soon</div>
-  <h1>WE'RE ALMOST READY TO HAUL</h1>
-  <p>Full-service junk removal launching soon. Got something to move right now? Give us a call.</p>
-  <a href="tel:+10000000000" class="cta">Call Us Now</a>
-  <footer>heavyremoval.com — Coming Soon</footer>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       1. TOPBAR
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        Serving Independence & Surrounding Areas
+      </div>
+      <div class="topbar-right">
+        <span>+1 816-801-0181</span>
+        <span class="topbar-dot"></span>
+        <span>Mon–Sat 7AM–7PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       2. STICKY NAV
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <header class="header-nav" id="mainHeader">
+    <div class="container nav-container">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Heavy Removal Home">
+        <span class="logo-main">HEAVY<span class="logo-dot">•</span>REMOVAL</span>
+        <span class="logo-sub">Junk Removal</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#what-we-take">What We Take</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#gallery">Our Work</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop CTA Button -->
+      <div class="nav-cta">
+        <a href="#book" class="btn btn-orange" style="padding: 0.7rem 1.5rem; font-size: 0.85rem;">Get Free Quote</a>
+      </div>
+
+      <!-- Hamburger Icon -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="#what-we-take" class="mobile-link">What We Take</a></li>
+      <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+      <li><a href="#gallery" class="mobile-link">Our Work</a></li>
+      <li><a href="#pricing" class="mobile-link">Pricing</a></li>
+      <li><a href="#reviews" class="mobile-link">Reviews</a></li>
+    </ul>
+    <div class="mobile-drawer-cta">
+      <a href="#book" class="btn btn-orange mobile-link">Get Free Quote</a>
+    </div>
+  </div>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       3. HERO SECTION
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="hero" id="hero">
+    <!-- Huge Ghost background text -->
+    <div class="hero-ghost-text">HEAVY</div>
+    
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Same-Day Junk Pickups Available</span>
+        <h1>Got Junk?<br>We've Got<br>A Truck.</h1>
+        <p class="hero-subline">
+          No contracts, no drama. We show up, load it up, and leave you with your space back. Straightforward, honest, and ready to roll.
+        </p>
+        <div class="hero-actions">
+          <a href="#book" class="btn btn-orange">Book Your Pickup</a>
+          <a href="tel:+18168010181" class="btn btn-outline">Call +1 816-801-0181</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       4. STATS SECTION
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-light" id="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <!-- Stat Card 1 -->
+        <div class="stat-card text-center reveal">
+          <div class="stat-number" data-target="4850">0</div>
+          <div class="stat-label">Spaces Cleared</div>
+          <div class="stat-desc">Basements, yards, garages, and attics made clean again.</div>
+        </div>
+        <!-- Stat Card 2 -->
+        <div class="stat-card text-center reveal delay-100">
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-label">Honest Pricing</div>
+          <div class="stat-desc">No surprise line items, no sudden upcharges. Just square quotes.</div>
+        </div>
+        <!-- Stat Card 3 -->
+        <div class="stat-card text-center reveal delay-200">
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Min Arrival Notice</div>
+          <div class="stat-desc">We text you 15 minutes before showing up. No wasted afternoons.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       5. WHAT WE TAKE (STUFF WE TAKE)
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-dark" id="what-we-take">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">What We Haul</span>
+        <h2 class="section-title">Stuff We Take</h2>
+        <p class="section-subtitle">If our crew can lift it, we can haul it. Here are the things we clear out of your space every single day.</p>
+      </div>
+
+      <div class="take-grid">
+        <!-- Card 1: Household -->
+        <div class="take-card reveal">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sofa outline SVG -->
+            <path d="M4 18v2h2v-2h12v2h2v-2c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2zM6 9h12v4H6V9zm-2 7h16v-1H4v1z" />
+          </svg>
+          <h3 class="take-title">Household Clutter</h3>
+          <p>Old couches, worn-out mattresses, broken dressers, tables, and cabinets. We strip rooms clean.</p>
+          <ul class="take-list">
+            <li>Sofas & Sectionals</li>
+            <li>Mattresses & Box Springs</li>
+            <li>Electronics & TVs</li>
+            <li>Attic & Basement Boxes</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Appliances -->
+        <div class="take-card reveal delay-100">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Appliance outline SVG -->
+            <path d="M18 2.01L6 2c-1.1 0-2 .89-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.11-.9-1.99-2-1.99zM18 20H6V11h12v9zm0-11H6V4h12v5zM8 5h2v3H8V5zm0 8h2v2H8v-2z" />
+          </svg>
+          <h3 class="take-title">Heavy Appliances</h3>
+          <p>Dead washing machines, heavy old dryers, rusty fridges, deep freezers, and stoves.</p>
+          <ul class="take-list">
+            <li>Refrigerators & Freezers</li>
+            <li>Washers & Dryers</li>
+            <li>Stoves & Microwaves</li>
+            <li>AC Units & Heaters</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Yard Waste -->
+        <div class="take-card reveal delay-200">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Leaf/Yard outline SVG -->
+            <path d="M17 8C14.24 8 12 10.24 12 13c0 2.76 2.24 5 5 5s5-2.24 5-5c0-2.76-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zM2 13c0 4.42 3.58 8 8 8h2v-2h-2c-3.31 0-6-2.69-6-6s2.69-6 6-6h2V5h-2c-4.42 0-8 3.58-8 8z" />
+          </svg>
+          <h3 class="take-title">Yard Debris</h3>
+          <p>Fallen branches, cut brush, old soil bags, rotted wooden fencing, old patio furniture, and sheds.</p>
+          <ul class="take-list">
+            <li>Tree Limbs & Trimmings</li>
+            <li>Soil, Sod & Gravel</li>
+            <li>Decks & Fences (Broken)</li>
+            <li>Old Outdoor Furniture</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Renovation Waste -->
+        <div class="take-card reveal">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Construction outline SVG -->
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z" />
+          </svg>
+          <h3 class="take-title">Renovation Scraps</h3>
+          <p>Drywall scraps, studs, rotted wood planks, floor tiles, rolled carpets, and bathroom fixtures.</p>
+          <ul class="take-list">
+            <li>Drywall & Studs</li>
+            <li>Wood Planks & Plywood</li>
+            <li>Carpets & Rugs</li>
+            <li>Old Sinks & Tubs</li>
+          </ul>
+        </div>
+
+        <!-- Card 5: Office Furniture -->
+        <div class="take-card reveal delay-100">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Office outline SVG -->
+            <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+          </svg>
+          <h3 class="take-title">Office Gear</h3>
+          <p>Bulky metal desks, executive chairs, filing cabinets, partition walls, and outdated office tech.</p>
+          <ul class="take-list">
+            <li>Desks & Shelves</li>
+            <li>Task Chairs</li>
+            <li>Metal Filing Cabinets</li>
+            <li>Printers & Monitors</li>
+          </ul>
+        </div>
+
+        <!-- Card 6: Heavy Stuff -->
+        <div class="take-card reveal delay-200">
+          <svg class="take-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Weight outline SVG -->
+            <path d="M12 3c-1.1 0-2 .9-2 2v1.16C7.39 6.74 5.37 9.04 5.04 12H3v2h2.04c.33 2.96 2.35 5.26 4.96 5.84V21h2v-1.16c2.61-.58 4.63-2.88 4.96-5.84H19v-2h-2.04c-.33-2.96-2.35-5.26-4.96-5.84V5c0-1.1-.9-2-2-2zm0 5c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z" />
+          </svg>
+          <h3 class="take-title">Heavy Items</h3>
+          <p>Unwieldy exercise equipment, treadmills, scrap metal pieces, heavy tool chests, and old hot tubs.</p>
+          <ul class="take-list">
+            <li>Treadmills & Gym Rigs</li>
+            <li>Safes & Metal Boxes</li>
+            <li>Iron & Steel Scraps</li>
+            <li>Trampolines & Play Sets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       6. HOW IT WORKS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-light" id="how-it-works">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">Straightforward & Simple</span>
+        <h2 class="section-title" style="color: var(--dark);">How It Works</h2>
+        <p class="section-subtitle">No complicated scheduling, no sudden price changes. Just simple relief.</p>
+      </div>
+
+      <div class="how-layout">
+        <!-- Steps List -->
+        <div class="how-steps">
+          <!-- Step 1 -->
+          <div class="how-step-item reveal-left">
+            <div class="how-step-num">01</div>
+            <div class="how-step-content">
+              <h3>Send a Picture</h3>
+              <p>Snap a quick photo of your pile and text it to <strong>+1 816-801-0181</strong>, or fill out our online quote request form. We will shoot you back a quick rough estimate.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="how-step-item reveal-left delay-100">
+            <div class="how-step-num">02</div>
+            <div class="how-step-content">
+              <h3>Approve the Price</h3>
+              <p>When the crew shows up, they look over the items in person and give you a solid, final price. If you are happy with it, we get straight to loading. No pressure, no sudden fees.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="how-step-item reveal-left delay-200">
+            <div class="how-step-num">03</div>
+            <div class="how-step-content">
+              <h3>Watch it disappear</h3>
+              <p>We do all the heavy lifting, loading, and hauling. Our crew even sweeps up before driving away, leaving you with a clean, open space.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generated Crew Photo Frame -->
+        <div class="how-image-container reveal-right">
+          <img src="crew_and_truck.png" alt="Heavy Removal friendly neighborhood crew standing by their truck" class="how-image" />
+          <div class="how-image-overlay">
+            <div class="how-image-tagline">We show up, we load it up.</div>
+            <div class="how-image-subtext">No drama, just direct help from your local neighbors.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       7. INTERACTIVE PRICING CALCULATOR
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-dark" id="pricing">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">Fair Prices</span>
+        <h2 class="section-title">No-Drama Pricing</h2>
+        <p class="section-subtitle">We charge by how much space your items fill in our truck bed. Use the estimator below to get a rough idea.</p>
+      </div>
+
+      <div class="pricing-layout">
+        <!-- Interactive Truck Graphic (Left) -->
+        <div class="truck-container reveal-left">
+          <div class="truck-label-badge">Truck Load Simulator</div>
+          <svg viewBox="0 0 400 200" class="truck-svg" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background ground line -->
+            <line x1="10" y1="175" x2="390" y2="175" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+            
+            <!-- Wheels -->
+            <circle cx="105" cy="155" r="20" fill="#111" stroke="#FF6B00" stroke-width="3"/>
+            <circle cx="105" cy="155" r="8" fill="#333"/>
+            <circle cx="295" cy="155" r="20" fill="#111" stroke="#FF6B00" stroke-width="3"/>
+            <circle cx="295" cy="155" r="8" fill="#333"/>
+            
+            <!-- Truck Cab (facing right for a positive onward direction) -->
+            <path d="M305,145 L365,145 L365,115 L340,95 L305,95 Z" fill="#222" stroke="#444" stroke-width="2"/>
+            <!-- Cab windshield -->
+            <path d="M335,100 L355,115 L335,115 Z" fill="#FF6B00" fill-opacity="0.1" stroke="#FF6B00" stroke-width="1.5"/>
+            <!-- Headlight -->
+            <circle cx="362" cy="128" r="4" fill="#fff" opacity="0.9"/>
+            
+            <!-- Cargo Box Frame -->
+            <rect x="50" y="60" width="250" height="85" rx="3" fill="#1c1c1c" stroke="#444" stroke-width="2"/>
+            
+            <!-- Dynamic Cargo Blocks (representing how much junk fills it) -->
+            <!-- 1/4 Truck: Left bottom quadrant -->
+            <rect id="block-1" x="55" y="104" width="118" height="37" rx="2" class="load-block"/>
+            <!-- 2/4 Truck (1/2 Truck): Left top quadrant -->
+            <rect id="block-2" x="55" y="65" width="118" height="36" rx="2" class="load-block"/>
+            <!-- 3/4 Truck: Right bottom quadrant -->
+            <rect id="block-3" x="177" y="104" width="118" height="37" rx="2" class="load-block"/>
+            <!-- 4/4 Truck (Full Truck): Right top quadrant -->
+            <rect id="block-4" x="177" y="65" width="118" height="36" rx="2" class="load-block"/>
+            
+            <!-- Single Item representation: Mini Sofa shape overlay -->
+            <!-- Placed inside Block 1, only active for Single Item -->
+            <path id="single-item-shape" d="M60,132 L60,118 A2,2 0 0 1 62,116 L68,116 A2,2 0 0 1 70,118 L70,126 L90,126 L90,118 A2,2 0 0 1 92,116 L98,116 A2,2 0 0 1 100,118 L100,132 Z" class="single-item-box" />
+          </svg>
+        </div>
+
+        <!-- Controls and Output Details (Right) -->
+        <div class="pricing-controls reveal-right">
+          <!-- Selection buttons -->
+          <div class="price-tabs">
+            <button class="price-tab-btn active" data-load="single">Single Item</button>
+            <button class="price-tab-btn" data-load="quarter">1/4 Truck</button>
+            <button class="price-tab-btn" data-load="half">1/2 Truck</button>
+            <button class="price-tab-btn" data-load="full">Full Truck</button>
+          </div>
+
+          <!-- Dynamic Output Card -->
+          <div class="price-details-card" id="pricing-details">
+            <div class="price-header">
+              <h3 class="price-title" id="price-title-text">Single Item</h3>
+              <div class="price-val" id="price-val-text">$85 - $150</div>
+            </div>
+            <p class="price-desc" id="price-desc-text">Perfect if you just have one bulky object like a couch, mattress, or refrigerator that you need gone quickly.</p>
+            
+            <div class="price-includes-title">What fits in this space:</div>
+            <ul class="price-includes-list" id="price-items-list">
+              <li>1 Large Sectional</li>
+              <li>1 Queen Mattress</li>
+              <li>1 Washing Machine</li>
+              <li>1 Heavy Safe</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Reassuring pricing footer -->
+        <div class="pricing-footer-note reveal">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          <p><strong>Every haul includes:</strong> Two crew members, heavy lifting, loading, dumping fees, and a thorough broom sweep-up. We also donate and recycle everything we can so it stays out of the landfill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       7.5. OUR WORK IN ACTION (GALLERY)
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-light" id="gallery">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">Real Results</span>
+        <h2 class="section-title" style="color: var(--dark);">Our Work In Action</h2>
+        <p class="section-subtitle">A quick look at the spaces we've cleared and how we load our trucks to make room for your clean start.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Photo 1: Garage -->
+        <div class="gallery-item reveal">
+          <div class="gallery-img-wrapper">
+            <img src="gallery_clean_garage.png" alt="Clean and empty residential garage after junk removal" class="gallery-img">
+            <div class="gallery-caption">
+              <h4>Cleared Garage Space</h4>
+              <p>Independence, MO</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Truck Load -->
+        <div class="gallery-item reveal delay-100">
+          <div class="gallery-img-wrapper">
+            <img src="gallery_truck_load.png" alt="Flatbed truck neatly loaded with boxes and old furniture" class="gallery-img">
+            <div class="gallery-caption">
+              <h4>Neat flatbed load</h4>
+              <p>Kansas City Area</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Yard -->
+        <div class="gallery-item reveal delay-200">
+          <div class="gallery-img-wrapper">
+            <img src="gallery_clean_backyard.png" alt="Clean residential backyard lawn after yard debris cleanup" class="gallery-img">
+            <div class="gallery-caption">
+              <h4>Backyard debris cleanup</h4>
+              <p>Blue Springs, MO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       8. REVIEWS / TESTIMONIALS
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-dark" id="reviews">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">Real Neighbors</span>
+        <h2 class="section-title">What Your Neighbors Say</h2>
+        <p class="section-subtitle">Read feedback from home and business owners in our local area who we've helped clear out.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card reveal">
+          <div>
+            <div class="review-stars">
+              <!-- 5 Stars SVG -->
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="review-text">"These guys are awesome. I had an old deep freezer in the basement. They got it up the narrow stairs in ten minutes, swept the concrete floor, and were super friendly. Very fair price!"</p>
+          </div>
+          <div class="review-author">
+            <div class="review-avatar-init">MR</div>
+            <div>
+              <div class="review-info-name">Marcus R.</div>
+              <div class="review-info-loc">West Seattle</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card reveal delay-100">
+          <div>
+            <div class="review-stars">
+              <!-- 5 Stars SVG -->
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="review-text">"Totally straightforward. I sent a photo of my backyard wood pile, they gave me an estimate, showed up on time, and charged exactly what they quoted. No drama, just honest work."</p>
+          </div>
+          <div class="review-author">
+            <div class="review-avatar-init">SL</div>
+            <div>
+              <div class="review-info-name">Sarah L.</div>
+              <div class="review-info-loc">Capitol Hill</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card reveal delay-200">
+          <div>
+            <div class="review-stars">
+              <!-- 5 Stars SVG -->
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="review-text">"Fast, honest, and affordable. They took my old couch, mattress, and some broken dressers. They did all the lifting while I just pointed. Highly recommend these guys!"</p>
+          </div>
+          <div class="review-author">
+            <div class="review-avatar-init">DK</div>
+            <div>
+              <div class="review-info-name">David K.</div>
+              <div class="review-info-loc">Ballard</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       9. QUICK BOOKING FORM
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section class="section-spacing bg-light" id="book">
+    <div class="container">
+      <div class="text-center">
+        <span class="eyebrow">Clear Space</span>
+        <h2 class="section-title" style="color: var(--dark);">Get Your Space Back</h2>
+        <p class="section-subtitle">Fill out the quick fields below. The crew will read it and call or text you back in minutes with an estimate.</p>
+      </div>
+
+      <div class="booking-wrapper reveal">
+        <!-- Form Success State -->
+        <div class="form-success-container" id="formSuccess">
+          <div class="success-icon-wrapper">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+          </div>
+          <h3 class="success-title">We Got Your Info!</h3>
+          <p class="success-text">Our crew is looking over your request. We'll text or call you back shortly. Get ready to say goodbye to your clutter!</p>
+        </div>
+
+        <!-- Form Element -->
+        <form id="quoteForm" novalidate>
+          <div class="form-grid">
+            <!-- Name -->
+            <div class="form-group">
+              <label for="fullName" class="form-label">Your Name</label>
+              <input type="text" id="fullName" class="form-input" placeholder="e.g. John Doe" required>
+            </div>
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input type="tel" id="phoneNumber" class="form-input" placeholder="e.g. +1 816-801-0181" required>
+            </div>
+            <!-- Location -->
+            <div class="form-group">
+              <label for="location" class="form-label">Your Neighborhood / City</label>
+              <input type="text" id="location" class="form-input" placeholder="e.g. West Seattle" required>
+            </div>
+            <!-- Load Size Selection -->
+            <div class="form-group">
+              <label for="loadSize" class="form-label">Approximate Load Size</label>
+              <select id="loadSize" class="form-input" required>
+                <option value="" disabled selected>Select from below...</option>
+                <option value="single">Single Item Only</option>
+                <option value="quarter">1/4 Truckload</option>
+                <option value="half">1/2 Truckload</option>
+                <option value="full">Full Truckload</option>
+                <option value="not-sure">I'm Not Sure</option>
+              </select>
+            </div>
+            <!-- Description -->
+            <div class="form-group form-full-width">
+              <label for="description" class="form-label">What kind of stuff are we hauling?</label>
+              <textarea id="description" class="form-input" rows="4" placeholder="Tell us what you want gone (e.g. wooden dresser, refrigerator, dusty boxes in attic)..." required></textarea>
+            </div>
+            
+            <!-- Photo Upload Area -->
+            <div class="form-group form-full-width">
+              <label class="form-label">Snap a photo of the pile (Optional)</label>
+              <div class="file-upload-container">
+                <svg class="file-upload-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
+                </svg>
+                <div class="file-upload-text">Upload a picture of your mess</div>
+                <div class="file-upload-subtext">JPEG or PNG. Max size 10MB.</div>
+                <input type="file" id="photoUpload" class="file-upload-input" accept="image/*">
+                <div class="file-preview" id="filePreview">Selected file: <span id="fileName"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-btn-wrapper">
+            <button type="submit" class="btn btn-orange form-btn" id="submitBtn">Send Request to the Crew</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       10. FOOTER
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <footer class="footer bg-dark">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand col -->
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-main">HEAVY<span class="logo-dot">•</span>REMOVAL</span>
+            <span class="logo-sub">Junk Removal</span>
+          </a>
+          <p class="footer-tagline">"Point at it. We'll take it." No contracts, no drama, no hidden fees. Just clean spaces.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.8 2a3.8 3.8 0 0 0-3.8 3.8v8.4A3.8 3.8 0 0 0 7 20h10a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 17 4H7m5 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Yelp">
+              <!-- Custom Yelp star icon representer -->
+              <svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links col -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#what-we-take">What We Take</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#book">Book Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact details col -->
+        <div>
+          <h4 class="footer-col-title">Just Call Us</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.57a.987.987 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+              <div>
+                <strong>Phone Number:</strong><br>
+                <a href="tel:+18168010181" style="color: var(--white); font-weight: 700;">+1 816-801-0181</a>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <div>
+                <strong>General Email:</strong><br>
+                <a href="mailto:aclservices@gmail.com">aclservices@gmail.com</a>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div>
+                <strong>Operating Office:</strong><br>
+                Independence, Missouri 64050
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-areas">
+          Proudly serving Independence, Kansas City, Blue Springs, Lee's Summit, Liberty, and surrounding areas. Licensed, bonded, and fully insured. We are a locally-owned neighborhood business.
+        </div>
+        <div>
+          &copy; 2026 Heavy Removal. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       INTERACTION LOGIC (JAVASCRIPT)
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      /* ── MOBILE NAV DRAWER TOGGLE ── */
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mobileDrawer = document.getElementById("mobileDrawer");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      const toggleMenu = () => {
+        const isActive = mobileDrawer.classList.toggle("is-active");
+        hamburgerBtn.classList.toggle("is-active", isActive);
+        hamburgerBtn.setAttribute("aria-expanded", isActive);
+        document.body.style.overflow = isActive ? "hidden" : "auto";
+      };
+
+      hamburgerBtn.addEventListener("click", toggleMenu);
+
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          if (mobileDrawer.classList.contains("is-active")) {
+            toggleMenu();
+          }
+        });
+      });
+
+
+      /* ── STICKY NAV SCROLL SHADOW ── */
+      const header = document.getElementById("mainHeader");
+      const handleScroll = () => {
+        if (window.scrollY > 40) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Run once at start
+
+
+      /* ── INTERSECTION OBSERVER FOR SCROLL REVEALS ── */
+      const revealElements = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+      
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+
+      /* ── STAT COUNTERS ANIMATION ── */
+      const statsSection = document.getElementById("stats-section");
+      const statNumbers = document.querySelectorAll(".stat-number");
+      let countersAnimated = false;
+
+      const animateCounters = () => {
+        statNumbers.forEach(num => {
+          const target = parseInt(num.getAttribute("data-target"), 10);
+          let current = 0;
+          const duration = 1800; // ms
+          const increment = target / (duration / 16); // ~60fps
+          
+          const updateCount = () => {
+            current += increment;
+            if (current >= target) {
+              num.innerText = target.toLocaleString() + (target === 100 ? "%" : target === 15 ? "-Min" : "+");
+            } else {
+              num.innerText = Math.floor(current).toLocaleString() + (target === 100 ? "%" : target === 15 ? "-Min" : "+");
+              requestAnimationFrame(updateCount);
+            }
+          };
+          requestAnimationFrame(updateCount);
+        });
+      };
+
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersAnimated) {
+            animateCounters();
+            countersAnimated = true;
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+
+
+      /* ── INTERACTIVE TRUCK LOAD PRICING CALCULATOR ── */
+      const priceTabButtons = document.querySelectorAll(".price-tab-btn");
+      
+      // Load details database
+      const loadDetails = {
+        single: {
+          title: "Single Item Pickup",
+          price: "$85 - $150",
+          desc: "Perfect when you just have one bulky object you need gone quickly, like a mattress, refrigerator, or sofa. We take it down the stairs and load it.",
+          items: ["1 Large Sectional Sofa", "1 Queen Mattress", "1 Washing Machine / Dryer", "1 Commercial Safe"],
+          blocks: [false, false, false, false],
+          singleActive: true
+        },
+        quarter: {
+          title: "1/4 Truckload",
+          price: "$220 - $290",
+          desc: "Great for quick clearouts. Equivalent to about two standard rooms of boxes, files, minor clutter, or small pieces of yard debris.",
+          items: ["10-15 Medium Boxes", "1 Dresser & Chair", "A few bags of garden mulch", "1 Rolled Bedroom Carpet"],
+          blocks: [true, false, false, false],
+          singleActive: false
+        },
+        half: {
+          title: "1/2 Truckload",
+          price: "$380 - $450",
+          desc: "Fits a small apartment's worth of furniture, stacked moving boxes, old exercise gear, or a major pile of broken garden decks.",
+          items: ["1 Living Room Set", "20-30 Stacked Boxes", "1 Treadmill & Weight Rack", "A pile of wooden fence posts"],
+          blocks: [true, true, false, false],
+          singleActive: false
+        },
+        full: {
+          title: "Full Truckload",
+          price: "$590 - $680",
+          desc: "Ideal for basements, full garage cleanouts, heavy construction remodels, and commercial business cleanouts. Tons of capacity.",
+          items: ["Entire Garage Clutter", "Construction Drywall Pile", "Full Kitchen Remodel Waste", "10-15 Furniture Items"],
+          blocks: [true, true, true, true],
+          singleActive: false
+        }
+      };
+
+      const updatePricingCalculator = (loadKey) => {
+        const data = loadDetails[loadKey];
+        if (!data) return;
+
+        // Update active class on tab buttons
+        priceTabButtons.forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-load") === loadKey);
+        });
+
+        // Update details text content
+        document.getElementById("price-title-text").innerText = data.title;
+        document.getElementById("price-val-text").innerText = data.price;
+        document.getElementById("price-desc-text").innerText = data.desc;
+
+        // Update list items
+        const listContainer = document.getElementById("price-items-list");
+        listContainer.innerHTML = "";
+        data.items.forEach(item => {
+          const li = document.createElement("li");
+          li.innerText = item;
+          listContainer.appendChild(li);
+        });
+
+        // Update SVG truck blocks
+        document.getElementById("block-1").classList.toggle("active", data.blocks[0]);
+        document.getElementById("block-2").classList.toggle("active", data.blocks[1]);
+        document.getElementById("block-3").classList.toggle("active", data.blocks[2]);
+        document.getElementById("block-4").classList.toggle("active", data.blocks[3]);
+
+        // Update SVG single item shape
+        document.getElementById("single-item-shape").classList.toggle("active", data.singleActive);
+      };
+
+      // Set initial state
+      updatePricingCalculator("single");
+
+      // Bind click events to tab buttons
+      priceTabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const loadKey = btn.getAttribute("data-load");
+          updatePricingCalculator(loadKey);
+        });
+      });
+
+
+      /* ── PHOTO UPLOAD PREVIEW STATE ── */
+      const fileInput = document.getElementById("photoUpload");
+      const filePreview = document.getElementById("filePreview");
+      const fileNameSpan = document.getElementById("fileName");
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length > 0) {
+          const file = e.target.files[0];
+          fileNameSpan.innerText = file.name;
+          filePreview.style.display = "block";
+        } else {
+          filePreview.style.display = "none";
+        }
+      });
+
+
+      /* ── FORM CLIENT-SIDE VALIDATION & SIMULATED SUBMIT ── */
+      const form = document.getElementById("quoteForm");
+      const formSuccess = document.getElementById("formSuccess");
+      const submitBtn = document.getElementById("submitBtn");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        let isValid = true;
+        const requiredInputs = form.querySelectorAll("[required]");
+        
+        // Simple input validation visual cue
+        requiredInputs.forEach(input => {
+          if (!input.value.trim()) {
+            input.style.borderColor = "red";
+            isValid = false;
+          } else {
+            input.style.borderColor = "#2d2d2d";
+          }
+        });
+
+        if (!isValid) {
+          // Highlight first failed input
+          const firstInvalid = Array.from(requiredInputs).find(input => !input.value.trim());
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        // Show loading spinner on button
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span class="spinner"></span>Sending...`;
+
+        // Simulate network latency (1.5 seconds)
+        setTimeout(() => {
+          // Hide form
+          form.style.display = "none";
+          // Show Success banner
+          formSuccess.style.display = "block";
+          // Scroll success banner into center view
+          formSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 1500);
+      });
+
+      // Clear visual red borders on type
+      form.querySelectorAll("input, textarea, select").forEach(input => {
+        input.addEventListener("input", () => {
+          if (input.style.borderColor === "red") {
+            input.style.borderColor = "#2d2d2d";
+          }
+        });
+        input.addEventListener("change", () => {
+          if (input.style.borderColor === "red") {
+            input.style.borderColor = "#2d2d2d";
+          }
+        });
+      });
+
+    });
+  </script>
 </body>
 </html>
