@@ -122,17 +122,29 @@
     }
 
     /* Alternating Sections styling */
-    .bg-dark {
-      background-color: #F5F5F0;
+    .bg-white {
+      background-color: #FFFFFF;
       color: var(--dark);
+    }
+
+    .bg-tint {
+      background-color: #F2F5EF;
+      color: var(--dark);
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .bg-light {
-      background-color: #FAFAFA;
+      background-color: #FFFFFF;
       color: var(--dark);
     }
 
-    .bg-light p, .bg-dark p {
+    .bg-dark {
+      background-color: #F2F5EF;
+      color: var(--dark);
+    }
+
+    .bg-light p, .bg-dark p, .bg-white p, .bg-tint p {
       color: #555555;
     }
 
@@ -617,8 +629,8 @@
     }
 
     .take-card {
-      background-color: var(--white);
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      background-color: #F8FAF6;
+      border: 1px solid rgba(0, 0, 0, 0.07);
       border-radius: 4px;
       padding: 2.5rem;
       transition: var(--transition-smooth);
@@ -1005,9 +1017,9 @@
       border-radius: 4px;
       overflow: hidden;
       box-shadow: var(--shadow-sm);
-      border: 4px solid var(--white);
+      border: 4px solid #F8FAF6;
       transition: var(--transition-smooth);
-      background-color: var(--white);
+      background-color: #F8FAF6;
     }
 
     .gallery-item:hover {
@@ -1154,7 +1166,7 @@
     .booking-wrapper {
       max-width: 900px;
       margin: 0 auto;
-      background-color: var(--white);
+      background-color: #F8FAF6;
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 6px;
       padding: 4rem;
@@ -1801,7 +1813,6 @@
           <li><a href="#what-we-take">What We Take</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#gallery">Our Work</a></li>
-          <li><a href="#pricing">Pricing</a></li>
           <li><a href="#reviews">Reviews</a></li>
         </ul>
       </nav>
@@ -1826,7 +1837,6 @@
       <li><a href="#what-we-take" class="mobile-link">What We Take</a></li>
       <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
       <li><a href="#gallery" class="mobile-link">Our Work</a></li>
-      <li><a href="#pricing" class="mobile-link">Pricing</a></li>
       <li><a href="#reviews" class="mobile-link">Reviews</a></li>
     </ul>
     <div class="mobile-drawer-cta">
@@ -1859,7 +1869,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        4. STATS SECTION
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="stats-section">
+  <section class="section-spacing bg-tint" id="stats-section">
     <div class="container">
       <div class="stats-grid">
         <!-- Stat Card 1 -->
@@ -1887,7 +1897,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        5. WHAT WE TAKE (STUFF WE TAKE)
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="what-we-take">
+  <section class="section-spacing bg-white" id="what-we-take">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">What We Haul</span>
@@ -1998,7 +2008,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        6. HOW IT WORKS
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="how-it-works">
+  <section class="section-spacing bg-tint" id="how-it-works">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Straightforward & Simple</span>
@@ -2048,9 +2058,9 @@
   </section>
 
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       7. INTERACTIVE PRICING CALCULATOR
+       7. INTERACTIVE PRICING CALCULATOR (HIDDEN)
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="pricing">
+  <section class="section-spacing bg-white" id="pricing" style="display: none;" aria-hidden="true">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Fair Prices</span>
@@ -2140,7 +2150,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        7.5. OUR WORK IN ACTION (GALLERY)
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="gallery">
+  <section class="section-spacing bg-white" id="gallery">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Real Results</span>
@@ -2188,7 +2198,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        8. REVIEWS / TESTIMONIALS
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="reviews">
+  <section class="section-spacing bg-tint" id="reviews">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Real Neighbors</span>
@@ -2269,7 +2279,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        9. QUICK BOOKING FORM
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-light" id="book">
+  <section class="section-spacing bg-white" id="book">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Clear Space</span>
@@ -2351,7 +2361,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        10. FOOTER
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <footer class="footer bg-light">
+  <footer class="footer bg-tint">
     <div class="container">
       <div class="footer-grid">
         <!-- Brand col -->
@@ -2381,7 +2391,7 @@
           <ul class="footer-links">
             <li><a href="#what-we-take">What We Take</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#gallery">Our Work</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#book">Book Pickup</a></li>
           </ul>
