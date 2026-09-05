@@ -341,31 +341,49 @@
 
     /* Logo Styling */
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .logo-icon {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: var(--orange);
+      flex-shrink: 0;
+      transition: var(--transition-fast);
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(60deg);
+    }
+
+    .logo-text-wrapper {
       display: flex;
       flex-direction: column;
-      line-height: 0.9;
     }
 
     .logo-main {
       font-family: var(--font-display);
-      font-size: 1.85rem;
-      color: var(--dark);
-      letter-spacing: 0.05em;
-    }
-
-    .logo-dot {
+      font-size: 2rem;
       color: var(--orange);
-      margin: 0 -0.05em;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .logo-sub {
       font-family: var(--font-body);
       font-size: 0.58rem;
       font-weight: 800;
-      color: var(--orange);
-      letter-spacing: 0.25em;
+      color: var(--dark);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       margin-top: 2px;
+      opacity: 0.75;
     }
 
     /* Navigation Links */
@@ -1803,8 +1821,10 @@
     <div class="container nav-container">
       <!-- Logo -->
       <a href="#" class="logo" aria-label="Heavy Removal Home">
-        <span class="logo-main">HEAVY<span class="logo-dot">•</span>REMOVAL</span>
-        <span class="logo-sub">Junk Removal</span>
+        <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 10.5C3.67 10.5 3 11.17 3 12s.67 1.5 1.5 1.5h3.09l-1.8 1.8 1.42 1.41 4.24-4.24-4.24-4.24-1.42 1.41 1.8 1.8H4.5zm8.09 4.91l-1.41-1.41-4.24 4.24 4.24 4.24 1.41-1.41-1.8-1.8H19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-8.82l1.91-1.86zm1.82-8.32L12.99 8.5l4.24 4.24 1.42-1.41-1.8-1.83H19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5H8.71l1.8-1.8-1.42-1.41-4.24 4.24 4.24 4.24 1.42-1.41-1.92-1.86h5.81z"/>
+        </svg>
+        <span class="logo-main">Heavy Removal</span>
       </a>
 
       <!-- Desktop Nav Links -->
@@ -2367,8 +2387,10 @@
         <!-- Brand col -->
         <div class="footer-brand">
           <a href="#" class="logo">
-            <span class="logo-main">HEAVY<span class="logo-dot">•</span>REMOVAL</span>
-            <span class="logo-sub">Junk Removal</span>
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 10.5C3.67 10.5 3 11.17 3 12s.67 1.5 1.5 1.5h3.09l-1.8 1.8 1.42 1.41 4.24-4.24-4.24-4.24-1.42 1.41 1.8 1.8H4.5zm8.09 4.91l-1.41-1.41-4.24 4.24 4.24 4.24 1.41-1.41-1.8-1.8H19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-8.82l1.91-1.86zm1.82-8.32L12.99 8.5l4.24 4.24 1.42-1.41-1.8-1.83H19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5H8.71l1.8-1.8-1.42-1.41-4.24 4.24 4.24 4.24 1.42-1.41-1.92-1.86h5.81z"/>
+            </svg>
+            <span class="logo-main">Heavy Removal</span>
           </a>
           <p class="footer-tagline">"Point at it. We'll take it." No contracts, no drama, no hidden fees. Just clean spaces.</p>
           <div class="footer-socials">
