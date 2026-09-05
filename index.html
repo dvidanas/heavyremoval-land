@@ -2665,10 +2665,10 @@
         // Simple input validation visual cue
         requiredInputs.forEach(input => {
           if (!input.value.trim()) {
-            input.style.borderColor = "red";
+            input.style.borderColor = "#EF4444";
             isValid = false;
           } else {
-            input.style.borderColor = "#2d2d2d";
+            input.style.borderColor = "#D1D5DB";
           }
         });
 
@@ -2729,13 +2729,13 @@
       // Clear visual red borders on type
       form.querySelectorAll("input, textarea, select").forEach(input => {
         input.addEventListener("input", () => {
-          if (input.style.borderColor === "red") {
-            input.style.borderColor = "#2d2d2d";
+          if (input.style.borderColor === "rgb(239, 68, 68)" || input.style.borderColor === "red") {
+            input.style.borderColor = "#D1D5DB";
           }
         });
         input.addEventListener("change", () => {
-          if (input.style.borderColor === "red") {
-            input.style.borderColor = "#2d2d2d";
+          if (input.style.borderColor === "rgb(239, 68, 68)" || input.style.borderColor === "red") {
+            input.style.borderColor = "#D1D5DB";
           }
         });
       });
