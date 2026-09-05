@@ -17,21 +17,23 @@
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     :root {
       --dark: #111111;
-      --orange: #FF6B00;
+      --orange: #74c049; /* Primary Green Accent */
+      --green: #74c049;
+      --green-dark: #589635;
       --white: #FFFFFF;
       --gray: #F5F5F0;
-      --muted: #777777;
-      --orange-glow: rgba(255, 107, 0, 0.3);
-      --orange-dim: rgba(255, 107, 0, 0.10);
+      --muted: #666666;
+      --orange-glow: rgba(116, 192, 73, 0.35);
+      --orange-dim: rgba(116, 192, 73, 0.12);
       
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'Inter', sans-serif;
       
       --transition-smooth: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
       --transition-fast: all 0.15s ease;
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.15);
-      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12);
       
       --container-width: 1200px;
     }
@@ -53,8 +55,8 @@
 
     body {
       font-family: var(--font-body);
-      background-color: var(--dark);
-      color: var(--white);
+      background-color: var(--white);
+      color: var(--dark);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -67,7 +69,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      opacity: 0.025;
+      opacity: 0.02;
       pointer-events: none;
       z-index: 9999;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -76,7 +78,7 @@
     /* Selection Color */
     ::selection {
       background-color: var(--orange);
-      color: var(--dark);
+      color: #FFFFFF;
     }
 
     /* Typography */
@@ -85,10 +87,11 @@
       letter-spacing: 0.05em;
       line-height: 1;
       text-transform: uppercase;
+      color: var(--dark);
     }
 
     p {
-      color: #D1D1CB;
+      color: #555555;
     }
 
     a {
@@ -120,17 +123,17 @@
 
     /* Alternating Sections styling */
     .bg-dark {
-      background-color: var(--dark);
-      color: var(--white);
-    }
-
-    .bg-light {
-      background-color: var(--gray);
+      background-color: #F5F5F0;
       color: var(--dark);
     }
 
-    .bg-light p {
-      color: #444444;
+    .bg-light {
+      background-color: #FAFAFA;
+      color: var(--dark);
+    }
+
+    .bg-light p, .bg-dark p {
+      color: #555555;
     }
 
     /* Buttons */
@@ -154,25 +157,26 @@
 
     .btn-orange {
       background-color: var(--orange);
-      color: var(--dark);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(116, 192, 73, 0.35);
     }
 
     .btn-orange:hover {
-      background-color: var(--white);
-      color: var(--dark);
-      box-shadow: 0 0 20px var(--orange-glow);
+      background-color: var(--green-dark);
+      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(116, 192, 73, 0.45);
       transform: translateY(-2px);
     }
 
     .btn-outline {
       background-color: transparent;
-      color: var(--white);
-      border-color: var(--white);
+      color: var(--dark);
+      border-color: var(--dark);
     }
 
     .btn-outline:hover {
-      background-color: var(--white);
-      color: var(--dark);
+      background-color: var(--dark);
+      color: var(--white);
       transform: translateY(-2px);
     }
 
@@ -190,15 +194,15 @@
 
     .btn-outline-orange {
       background-color: transparent;
-      color: var(--orange);
+      color: var(--green-dark);
       border-color: var(--orange);
     }
 
     .btn-outline-orange:hover {
       background-color: var(--orange);
-      color: var(--dark);
+      color: #FFFFFF;
       transform: translateY(-2px);
-      box-shadow: 0 0 15px var(--orange-glow);
+      box-shadow: 0 4px 15px var(--orange-glow);
     }
 
     /* Eyebrows & Section Headers */
@@ -208,17 +212,18 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--orange);
+      color: var(--green-dark);
       background-color: var(--orange-dim);
       padding: 0.35rem 0.85rem;
       border-radius: 3px;
-      border: 1px solid rgba(255, 107, 0, 0.2);
+      border: 1px solid rgba(116, 192, 73, 0.25);
       margin-bottom: 1.5rem;
     }
 
     .section-title {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       margin-bottom: 1rem;
+      color: var(--dark);
     }
 
     .section-subtitle {
@@ -226,6 +231,7 @@
       max-width: 650px;
       margin: 0 auto 4rem auto;
       font-weight: 400;
+      color: #555555;
     }
 
     .section-subtitle-left {
@@ -254,7 +260,7 @@
        1. TOPBAR
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .topbar {
-      background-color: #EAEAE2;
+      background-color: #F0F2ED;
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       padding: 0.5rem 0;
       font-size: 0.72rem;
@@ -301,7 +307,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -309,7 +315,7 @@
     }
 
     .header-nav.scrolled {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       box-shadow: var(--shadow-sm);
       padding: 0.2rem 0;
     }
@@ -503,7 +509,7 @@
       display: flex;
       align-items: center;
       padding: 5rem 0;
-      background: radial-gradient(circle at bottom left, rgba(255, 107, 0, 0.08) 0%, #FFFFFF 65%, #F5F5F0 100%);
+      background: radial-gradient(circle at bottom left, rgba(116, 192, 73, 0.12) 0%, #FFFFFF 65%, #F4F6F1 100%);
       overflow: hidden;
     }
 
@@ -619,6 +625,7 @@
       position: relative;
       overflow: hidden;
       color: var(--dark);
+      box-shadow: var(--shadow-sm);
     }
 
     .take-card::before {
@@ -638,7 +645,7 @@
 
     .take-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255, 107, 0, 0.25);
+      border-color: rgba(116, 192, 73, 0.35);
       background-color: var(--white);
       box-shadow: var(--shadow-md);
     }
@@ -704,14 +711,14 @@
     .how-step-num {
       font-family: var(--font-display);
       font-size: clamp(3rem, 5vw, 4rem);
-      color: var(--orange);
+      color: var(--green-dark);
       line-height: 1;
-      opacity: 0.8;
-      background-color: rgba(255, 107, 0, 0.08);
+      opacity: 0.9;
+      background-color: rgba(116, 192, 73, 0.12);
       padding: 0.2rem 0.8rem;
       border-radius: 4px;
       height: fit-content;
-      border: 1px solid rgba(255, 107, 0, 0.15);
+      border: 1px solid rgba(116, 192, 73, 0.25);
     }
 
     .how-step-content h3 {
@@ -723,6 +730,7 @@
 
     .how-step-content p {
       font-size: 1rem;
+      color: #555555;
     }
 
     /* Crew Image Frame */
@@ -740,7 +748,7 @@
       border: 8px solid var(--orange);
       pointer-events: none;
       z-index: 2;
-      opacity: 0.15;
+      opacity: 0.2;
     }
 
     .how-image {
@@ -749,7 +757,7 @@
       display: block;
       object-fit: cover;
       object-position: center bottom;
-      filter: grayscale(10%) contrast(105%);
+      filter: grayscale(5%) contrast(105%);
       transition: var(--transition-smooth);
     }
 
@@ -762,7 +770,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
+      background: linear-gradient(to top, rgba(17, 17, 17, 0.88), transparent);
       padding: 2.5rem 2rem 1.5rem 2rem;
       z-index: 3;
       color: var(--white);
@@ -776,7 +784,8 @@
 
     .how-image-subtext {
       font-size: 0.85rem;
-      opacity: 0.8;
+      opacity: 0.85;
+      color: #E2E2D5;
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -791,11 +800,11 @@
 
     /* Interactive Truck Box styling */
     .truck-container {
-      background-color: #171717;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 6px;
       padding: 3rem 2rem;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-sm);
       position: relative;
     }
 
@@ -808,41 +817,43 @@
 
     /* Load Block States */
     .load-block {
-      fill: #262626;
-      stroke: rgba(255, 255, 255, 0.04);
+      fill: #E2E8F0;
+      stroke: #CBD5E1;
       stroke-width: 1.5px;
       transition: fill 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
     }
 
     .load-block.active {
       fill: var(--orange);
-      opacity: 0.9;
+      stroke: var(--green-dark);
+      opacity: 1;
     }
     
     .single-item-box {
-      fill: #262626;
-      stroke: rgba(255, 255, 255, 0.04);
+      fill: #CBD5E1;
+      stroke: #94A3B8;
       stroke-width: 1px;
       transition: fill 0.3s ease;
     }
 
     .single-item-box.active {
       fill: var(--orange);
+      stroke: var(--green-dark);
     }
 
     .truck-label-badge {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background-color: var(--dark);
-      color: #999999;
+      background-color: #F0F2ED;
+      color: #555555;
       font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 0.3rem 0.6rem;
       border-radius: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     /* Controls & Details */
@@ -856,16 +867,16 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.5rem;
-      background-color: rgba(255, 255, 255, 0.03);
+      background-color: #ECEFE8;
       padding: 0.4rem;
       border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .price-tab-btn {
       background: none;
       border: none;
-      color: #999999;
+      color: #666666;
       font-family: var(--font-body);
       font-weight: 700;
       font-size: 0.8rem;
@@ -879,26 +890,28 @@
 
     .price-tab-btn.active {
       background-color: var(--orange);
-      color: var(--dark);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-sm);
     }
 
     .price-tab-btn:hover:not(.active) {
-      color: var(--white);
-      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--dark);
+      background-color: rgba(255, 255, 255, 0.6);
     }
 
     .price-details-card {
-      background-color: #171717;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 4px;
       padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
     }
 
     .price-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       padding-bottom: 1.5rem;
       margin-bottom: 1.5rem;
     }
@@ -907,6 +920,7 @@
       font-family: var(--font-display);
       font-size: 2.2rem;
       letter-spacing: 0.02em;
+      color: var(--dark);
     }
 
     .price-val {
@@ -918,7 +932,7 @@
 
     .price-desc {
       font-size: 1rem;
-      color: #DDDDDD;
+      color: #555555;
       margin-bottom: 1.5rem;
     }
 
@@ -928,7 +942,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 0.8rem;
-      color: var(--orange);
+      color: var(--green-dark);
     }
 
     .price-includes-list {
@@ -937,7 +951,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 0.6rem;
       font-size: 0.9rem;
-      color: #BBBBBB;
+      color: #555555;
     }
 
     .price-includes-list li {
@@ -954,8 +968,8 @@
 
     .pricing-footer-note {
       grid-column: span 2;
-      background-color: rgba(255, 107, 0, 0.05);
-      border: 1px dashed rgba(255, 107, 0, 0.25);
+      background-color: rgba(116, 192, 73, 0.08);
+      border: 1px dashed rgba(116, 192, 73, 0.35);
       padding: 1.2rem 1.8rem;
       border-radius: 4px;
       font-size: 0.88rem;
@@ -963,6 +977,11 @@
       align-items: center;
       gap: 1rem;
       margin-top: 1rem;
+      color: #333333;
+    }
+
+    .pricing-footer-note strong {
+      color: var(--dark);
     }
 
     .pricing-footer-note svg {
@@ -1071,7 +1090,7 @@
     .review-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
-      border-color: rgba(255, 107, 0, 0.2);
+      border-color: rgba(116, 192, 73, 0.3);
     }
 
     .review-stars {
@@ -1106,7 +1125,7 @@
       width: 40px;
       height: 40px;
       background-color: var(--orange);
-      color: var(--dark);
+      color: #FFFFFF;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1135,11 +1154,11 @@
     .booking-wrapper {
       max-width: 900px;
       margin: 0 auto;
-      background-color: #171717;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background-color: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 6px;
       padding: 4rem;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
       position: relative;
     }
 
@@ -1148,9 +1167,9 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, transparent 70%);
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(116, 192, 73, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -1175,15 +1194,15 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: #BBBBBB;
+      color: #444444;
     }
 
     .form-input {
-      background-color: var(--dark);
-      border: 1.5px solid #2d2d2d;
+      background-color: #FAFAFA;
+      border: 1.5px solid #D1D5DB;
       border-radius: 4px;
       padding: 0.9rem 1.2rem;
-      color: var(--white);
+      color: var(--dark);
       font-family: var(--font-body);
       font-size: 0.95rem;
       transition: var(--transition-fast);
@@ -1191,17 +1210,18 @@
 
     .form-input:focus {
       outline: none;
+      background-color: #FFFFFF;
       border-color: var(--orange);
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.15);
+      box-shadow: 0 0 0 3px rgba(116, 192, 73, 0.2);
     }
 
     .form-input::placeholder {
-      color: #555555;
+      color: #9CA3AF;
     }
 
     select.form-input {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B00'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2374c049'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 1.5rem;
@@ -1211,18 +1231,18 @@
     /* Photo Upload Field */
     .file-upload-container {
       position: relative;
-      border: 2px dashed #2d2d2d;
+      border: 2px dashed #D1D5DB;
       border-radius: 4px;
       padding: 1.5rem;
       text-align: center;
       cursor: pointer;
       transition: var(--transition-smooth);
-      background-color: rgba(255, 255, 255, 0.01);
+      background-color: #F9FAFB;
     }
 
     .file-upload-container:hover {
       border-color: var(--orange);
-      background-color: rgba(255, 107, 0, 0.02);
+      background-color: rgba(116, 192, 73, 0.04);
     }
 
     .file-upload-input {
@@ -1245,7 +1265,7 @@
     .file-upload-text {
       font-size: 0.9rem;
       font-weight: 600;
-      color: #DDDDDD;
+      color: var(--dark);
       margin-bottom: 0.2rem;
     }
 
@@ -1258,7 +1278,7 @@
       margin-top: 1rem;
       font-size: 0.8rem;
       font-weight: bold;
-      color: var(--orange);
+      color: var(--green-dark);
       display: none;
     }
 
@@ -1283,14 +1303,14 @@
     .success-icon-wrapper {
       width: 80px;
       height: 80px;
-      background-color: var(--orange-dim);
+      background-color: rgba(116, 192, 73, 0.12);
       border: 2px solid var(--orange);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 2rem auto;
-      box-shadow: 0 0 20px var(--orange-glow);
+      box-shadow: 0 0 20px rgba(116, 192, 73, 0.25);
     }
 
     .success-icon-wrapper svg {
@@ -1303,11 +1323,12 @@
       font-family: var(--font-display);
       font-size: 2.8rem;
       margin-bottom: 1rem;
+      color: var(--dark);
     }
 
     .success-text {
       font-size: 1.1rem;
-      color: #DDDDDD;
+      color: #555555;
       max-width: 500px;
       margin: 0 auto;
     }
@@ -1317,9 +1338,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(17, 17, 17, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      border-top-color: var(--dark);
+      border-top-color: #FFFFFF;
       animation: spin 0.8s ease-in-out infinite;
       margin-right: 0.5rem;
     }
@@ -1332,7 +1353,7 @@
        10. FOOTER
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .footer {
-      background-color: #F5F5F0;
+      background-color: #F0F2ED;
       border-top: 1px solid rgba(0, 0, 0, 0.06);
       padding: 5rem 0 2rem 0;
     }
@@ -1384,7 +1405,7 @@
     }
 
     .social-btn:hover svg {
-      fill: var(--dark);
+      fill: #FFFFFF;
     }
 
     .footer-col-title {
@@ -1392,7 +1413,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--orange);
+      color: var(--green-dark);
       margin-bottom: 1.5rem;
     }
 
@@ -2029,7 +2050,7 @@
   <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        7. INTERACTIVE PRICING CALCULATOR
        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-  <section class="section-spacing bg-dark" id="pricing">
+  <section class="section-spacing bg-light" id="pricing">
     <div class="container">
       <div class="text-center">
         <span class="eyebrow">Fair Prices</span>
@@ -2043,23 +2064,23 @@
           <div class="truck-label-badge">Truck Load Simulator</div>
           <svg viewBox="0 0 400 200" class="truck-svg" xmlns="http://www.w3.org/2000/svg">
             <!-- Background ground line -->
-            <line x1="10" y1="175" x2="390" y2="175" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+            <line x1="10" y1="175" x2="390" y2="175" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
             
             <!-- Wheels -->
-            <circle cx="105" cy="155" r="20" fill="#111" stroke="#FF6B00" stroke-width="3"/>
-            <circle cx="105" cy="155" r="8" fill="#333"/>
-            <circle cx="295" cy="155" r="20" fill="#111" stroke="#FF6B00" stroke-width="3"/>
-            <circle cx="295" cy="155" r="8" fill="#333"/>
+            <circle cx="105" cy="155" r="20" fill="#222" stroke="#74c049" stroke-width="3"/>
+            <circle cx="105" cy="155" r="8" fill="#666"/>
+            <circle cx="295" cy="155" r="20" fill="#222" stroke="#74c049" stroke-width="3"/>
+            <circle cx="295" cy="155" r="8" fill="#666"/>
             
             <!-- Truck Cab (facing right for a positive onward direction) -->
             <path d="M305,145 L365,145 L365,115 L340,95 L305,95 Z" fill="#222" stroke="#444" stroke-width="2"/>
             <!-- Cab windshield -->
-            <path d="M335,100 L355,115 L335,115 Z" fill="#FF6B00" fill-opacity="0.1" stroke="#FF6B00" stroke-width="1.5"/>
+            <path d="M335,100 L355,115 L335,115 Z" fill="#74c049" fill-opacity="0.2" stroke="#74c049" stroke-width="1.5"/>
             <!-- Headlight -->
-            <circle cx="362" cy="128" r="4" fill="#fff" opacity="0.9"/>
+            <circle cx="362" cy="128" r="4" fill="#FFD700" opacity="0.9"/>
             
             <!-- Cargo Box Frame -->
-            <rect x="50" y="60" width="250" height="85" rx="3" fill="#1c1c1c" stroke="#444" stroke-width="2"/>
+            <rect x="50" y="60" width="250" height="85" rx="3" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
             
             <!-- Dynamic Cargo Blocks (representing how much junk fills it) -->
             <!-- 1/4 Truck: Left bottom quadrant -->
@@ -2193,7 +2214,7 @@
             <div class="review-avatar-init">MR</div>
             <div>
               <div class="review-info-name">Marcus R.</div>
-              <div class="review-info-loc">West Seattle</div>
+              <div class="review-info-loc">Independence, MO</div>
             </div>
           </div>
         </div>
@@ -2215,7 +2236,7 @@
             <div class="review-avatar-init">SL</div>
             <div>
               <div class="review-info-name">Sarah L.</div>
-              <div class="review-info-loc">Capitol Hill</div>
+              <div class="review-info-loc">Lee's Summit, MO</div>
             </div>
           </div>
         </div>
@@ -2237,7 +2258,7 @@
             <div class="review-avatar-init">DK</div>
             <div>
               <div class="review-info-name">David K.</div>
-              <div class="review-info-loc">Ballard</div>
+              <div class="review-info-loc">Blue Springs, MO</div>
             </div>
           </div>
         </div>
@@ -2284,7 +2305,7 @@
             <!-- Location -->
             <div class="form-group">
               <label for="location" class="form-label">Your Neighborhood / City</label>
-              <input type="text" id="location" class="form-input" placeholder="e.g. West Seattle" required>
+              <input type="text" id="location" class="form-input" placeholder="e.g. Independence, MO" required>
             </div>
             <!-- Load Size Selection -->
             <div class="form-group">
